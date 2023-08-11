@@ -117,7 +117,14 @@ class Listing:
 
     @property
     def ber(self):
-        return self._result["ber"]["rating"]
+        try:
+            if !self._result["ber"]["rating"]:
+                return "N/A"
+            else:
+                return self._result["ber"]["rating"]
+        except KeyError as e:
+            return "N/A"
+        
 
     @property
     def category(self):
